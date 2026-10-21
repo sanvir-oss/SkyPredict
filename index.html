@@ -1,0 +1,267 @@
+<
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyPredict | Flight Price Prediction</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8ff;
+            color: #142747;
+            overflow-x: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: white;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #1769ff;
+        }
+
+        .logo span {
+            color: #ff8b35;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #263957;
+            font-weight: bold;
+        }
+
+        .hero {
+            min-height: 570px;
+            padding: 75px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            background: linear-gradient(120deg, #e5f2ff, #ffffff, #e8f7ff);
+        }
+
+        .hero-content {
+            max-width: 540px;
+            animation: fadeIn 1s ease;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #dceaff;
+            color: #1769ff;
+            padding: 10px 16px;
+            border-radius: 30px;
+            margin-bottom: 22px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: clamp(40px, 5vw, 62px);
+            line-height: 1.12;
+            margin-bottom: 22px;
+        }
+
+        h1 span {
+            color: #1769ff;
+        }
+
+        .hero p {
+            color: #64748b;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1769ff;
+            color: white;
+            padding: 16px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 8px 22px #1769ff35;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0754dc;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            width: 50%;
+            max-width: 620px;
+            border-radius: 25px;
+            animation: float 4s ease-in-out infinite;
+            box-shadow: 0 20px 45px #294d7720;
+        }
+
+        .features {
+            padding: 65px 8%;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 35px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 22px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px #1c3d6810;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .feature-card .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #718096;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #142747;
+            color: white;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 55px 6%;
+            }
+
+            .hero-image {
+                width: 100%;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Sky<span>Predict</span> ✈</div>
+        <a href="/predict">Flight Prediction</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="tag">✦ Smart Travel Starts Here</div>
+
+            <h1>Fly Smarter.<br>Pay <span>Better.</span></h1>
+
+            <p>
+                Discover your next journey with intelligent flight
+                fare predictions. Plan your trip, explore your options,
+                and make smarter travel decisions.
+            </p>
+
+            <a href="/predict" class="btn">Explore Flight Prediction →</a>
+        </div>
+
+        <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=85"
+            alt="Passenger airplane flying above beautiful clouds"
+        >
+    </section>
+
+    <section class="features" id="features">
+        <h2>Your Journey, Made Smarter</h2>
+        <p class="subtitle">
+            Powerful machine learning. Simpler travel planning.
+        </p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">🤖</div>
+                <h3>AI-Powered Prediction</h3>
+                <p>
+                    Use a trained machine learning model to estimate
+                    flight fares from your travel details.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">🌍</div>
+                <h3>Explore Destinations</h3>
+                <p>
+                    Enter your departure and destination details
+                    to prepare for your next trip.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">💎</div>
+                <h3>Travel with Confidence</h3>
+                <p>
+                    Get an estimated fare to help you plan your
+                    travel budget more effectively.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 SkyPredict | Smart Flight Price Prediction
+    </footer>
+
+</body>
+</html>

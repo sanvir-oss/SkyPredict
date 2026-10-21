@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Price Prediction | SkyPredict</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #193153;
+            background: #f2f6ff;
+        }
+
+        header {
+            padding: 22px 7%;
+            background: white;
+            box-shadow: 0 3px 15px #19315312;
+        }
+
+        header a {
+            color: #1769ff;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .hero {
+            padding: 45px 20px 25px;
+            text-align: center;
+            background: linear-gradient(120deg, #e4f0ff, #f7fcff);
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin: 0 0 12px;
+        }
+
+        .hero p {
+            color: #65758b;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto 50px;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px #254c8015;
+        }
+
+        .fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d9e3f0;
+            border-radius: 10px;
+            background: #fbfdff;
+            font-size: 15px;
+            color: #243b59;
+        }
+
+        select:focus, input:focus {
+            outline: 2px solid #8ab8ff;
+            border-color: #1769ff;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 28px;
+            padding: 16px;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #1769ff, #438df8);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        button:hover {
+            box-shadow: 0 8px 20px #1769ff35;
+            transform: translateY(-2px);
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background: #fff4d9;
+            text-align: center;
+            color: #755315;
+        }
+
+        .result {
+            background: linear-gradient(120deg, #e4f0ff, #f0fff8);
+            color: #193153;
+            animation: appear 0.6s ease;
+        }
+
+        .result h2 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #1769ff;
+            font-size: 36px;
+            margin: 12px 0;
+        }
+
+        .back {
+            display: block;
+            margin-top: 22px;
+            text-align: center;
+            color: #1769ff;
+            text-decoration: none;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px 12px;
+                padding: 22px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .fields {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a href="/">✈ SkyPredict</a>
+</header>
+
+<section class="hero">
+    <h1>Find Your Flight Fare ✈️</h1>
+    <p>Enter your journey details to estimate your flight price.</p>
+</section>
+
+<main class="container">
+
+    <form action="/predict" method="POST">
+
+        <div class="fields">
+
+            <div>
+                <label for="airline">1. Airline</label>
+                <select id="airline" name="airline" required>
+                    <option value="">Select Airline</option>
+                    <option value="Air India">Air India</option>
+                    <option value="IndiGo">IndiGo</option>
+                    <option value="Jet Airways">Jet Airways</option>
+                    <option value="SpiceJet">SpiceJet</option>
+                    <option value="Multiple carriers">Multiple carriers</option>
+                    <option value="Vistara">Vistara</option>
+                    <option value="GoAir">GoAir</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="stops">2. Total Stops</label>
+                <select id="stops" name="stops" required>
+                    <option value="">Select Stops</option>
+                    <option value="0">Non-stop</option>
+                    <option value="1">1 stop</option>
+                    <option value="2">2 stops</option>
+                    <option value="3">3 stops</option>
+                    <option value="4">4 stops</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="source">3. Departure City</label>
+                <select id="source" name="source" required>
+                    <option value="">Select Departure City</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Banglore">Bangalore</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="destination">4. Destination City</label>
+                <select id="destination" name="destination" required>
+                    <option value="">Select Destination City</option>
+                    <option value="Cochin">Cochin</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="New Delhi">New Delhi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Kolkata">Kolkata</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="duration">5. Flight Duration</label>
+                <select id="duration" name="duration" required>
+                    <option value="">Select Duration</option>
+                    {% for duration in duration_options %}
+                    <option value="{{ duration }}">{{ duration }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="full">
+                <label for="journey_date">6. Journey Date</label>
+                <input type="date" id="journey_date"
+                       name="journey_date" required>
+            </div>
+
+        </div>
+
+        <button type="submit">✨ Estimate Flight Price</button>
+
+    </form>
+
+    {% if prediction is defined %}
+    <div class="message result">
+        <h2>✈️ Your Estimated Flight Fare</h2>
+        <div class="price">₹{{ "%.2f"|format(prediction) }}</div>
+        <p>This is an estimated fare generated by your trained model.</p>
+    </div>
+    {% endif %}
+
+    {% if message %}
+    <div class="message">{{ message }}</div>
+    {% endif %}
+
+    <a class="back" href="/">← Back to Home</a>
+
+</main>
+
+</body>
+</html>
